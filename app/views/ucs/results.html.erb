@@ -1,0 +1,14 @@
+<h1>Listing candidates with votes</h1>
+
+  <% @candidates.each do |cand| %>
+
+    <p><%= cand.name %><strong> Total=<%= cand.votes.collect(&:votes).sum %></strong></p>
+    <% cand.votes.each do |v| %>
+       <p>
+          <%= v.station.name %> = <%= v.votes %>
+      </p>
+     <% end %>
+
+
+
+  <% end %>
