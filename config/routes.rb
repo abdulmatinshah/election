@@ -2,6 +2,7 @@ Election::Application.routes.draw do
   resources :ucs do
     member do
      get 'results'
+     get 'updates'
    end
   end
   root to: 'ucs#index'

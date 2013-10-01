@@ -1,5 +1,5 @@
 class UcsController < ApplicationController
-  before_action :set_uc, only: [:show, :edit, :update, :destroy, :results]
+  before_action :set_uc, only: [:show, :edit, :update, :destroy, :results, :updates]
 
   # GET /ucs
   # GET /ucs.json
@@ -62,7 +62,9 @@ class UcsController < ApplicationController
   end
   def results
     @candidates = @uc.candidates
-    
+  end
+  def updates
+
   end
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -72,6 +74,9 @@ class UcsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def uc_params
-      params.require(:uc).permit(:name)
+      params.require(:uc).permit(:name, 
+        :candidates_attributes => [:id, :name,
+          :votes_attributes => [:id, :voters, :station_id ]
+          ])
     end
 end

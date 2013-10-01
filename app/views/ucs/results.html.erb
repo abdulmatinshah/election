@@ -2,10 +2,10 @@
 
   <% @candidates.each do |cand| %>
 
-    <p><%= cand.name %><strong> Total=<%= cand.votes.collect(&:votes).sum %></strong></p>
+    <p><%= cand.name %><strong> Total=<%= cand.votes.collect(&:voters).sum %></strong></p>
     <% cand.votes.each do |v| %>
        <p>
-          <%= v.station.name %> = <%= v.votes %>
+          <%= v.station.name %> = <%= v.voters %>
       </p>
      <% end %>
 

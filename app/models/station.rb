@@ -3,4 +3,6 @@ class Station < ActiveRecord::Base
   
   has_many :votes
   has_many :candidates, through: :votes
+
+  # accepts_nested_attributes_for :votes
 end
