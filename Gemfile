@@ -4,10 +4,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-<<<<<<< HEAD
+
 gem 'sqlite3', group: [:development, :test]
 gem 'pg', group: [:production]
-=======
 # group :development, :test do
 #   # gem 'sqlite3' 
 # end
@@ -19,7 +18,6 @@ gem 'sqlite3', group: [:development, :test]
 gem 'pg', group: [:production]
 
 # gem 'rails_12factor', group: :production
->>>>>>> twritter-bootstrap-rails
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

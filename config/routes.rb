@@ -1,11 +1,16 @@
 Election::Application.routes.draw do
+  
+  devise_for :users
   resources :ucs do
     member do
      get 'results'
      get 'updates'
+
    end
+   resources :villages, only: [:index, :new, :create, :edit]
   end
-  root to: 'ucs#index'
+  resource :dashboard, only: [:show]
+  root to: 'dashboards#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

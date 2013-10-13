@@ -1,11 +1,12 @@
-<h1>Listing ucs</h1>
+<h1><span class="glyphicon glyphicon-align-left"></span> Listing UCs</h1>
 
 
-  <table>
+  <table class="table table-stripped">
   <thead>
     <tr>
       <th>Name</th>
       <th></th>
+      <th>Villages</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,6 +17,7 @@
     <% @ucs.each do |uc| %>
       <tr>
         <td><%= uc.name %></td>
+        <td><%= link_to 'Villages', uc_villages_path(uc) %></td>
         <td><%= link_to 'Show', uc %></td>
         <td><%= link_to 'Edit', updates_uc_path(uc) %></td>
         <td><%= link_to 'Results', results_uc_path(uc) %></td>
@@ -26,5 +28,4 @@
 </table>
 
 <br>
-<span class="glyphicon glyphicon-refresh"></span>
 <%= link_to 'New Uc', new_uc_path, class: 'btn btn-default' %>
