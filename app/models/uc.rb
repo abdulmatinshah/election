@@ -4,4 +4,5 @@ class Uc < ActiveRecord::Base
   has_many :villages
   
   accepts_nested_attributes_for :candidates
+  
 end
