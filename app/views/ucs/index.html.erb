@@ -1,12 +1,12 @@
 <h1><span class="glyphicon glyphicon-align-left"></span> Listing UCs</h1>
-
+<%= link_to 'CSV', ucs_path(format: 'csv') %>
 
   <table class="table table-stripped">
   <thead>
     <tr>
       <th>Name</th>
-      <th></th>
       <th>Villages</th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,8 +19,10 @@
         <td><%= uc.name %></td>
         <td><%= link_to 'Villages', uc_villages_path(uc) %></td>
         <td><%= link_to 'Show', uc %></td>
-        <td><%= link_to 'Edit', updates_uc_path(uc) %></td>
         <td><%= link_to 'Results', results_uc_path(uc) %></td>
+        <%  if current_user && current_user.admin? %>
+          <td><%= link_to 'Edit', updates_uc_path(uc) %></td>
+        <% end %>
         <td><%= link_to 'Destroy', uc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -29,3 +31,4 @@
 
 <br>
 <%= link_to 'New Uc', new_uc_path, class: 'btn btn-default' %>
+

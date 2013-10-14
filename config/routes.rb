@@ -5,12 +5,17 @@ Election::Application.routes.draw do
     member do
      get 'results'
      get 'updates'
-
+    end
+    collection do
+      post 'import'
+    end
+   resources :villages, only: [:index, :new, :create, :edit] 
    end
-   resources :villages, only: [:index, :new, :create, :edit]
-  end
+  
   resource :dashboard, only: [:show]
-  root to: 'dashboards#show'
+  get 'import_villages', to: "villages#import"
+  get 'dashboard', to: 'dashboards#show', as: :dash
+  root to: 'ucs#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -5,6 +5,11 @@ class UcsController < ApplicationController
   # GET /ucs.json
   def index
     @ucs = Uc.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @ucs.to_csv}
+      format.xls { send_data @ucs.to_csv(col_sep: '\t')}
+    end
   end
 
   # GET /ucs/1
@@ -64,7 +69,18 @@ class UcsController < ApplicationController
     @candidates = @uc.candidates
   end
   def updates
+  end
+  def import
 
+    if params[:file] && params[:ucs] 
+      Uc.import(params[:file]) 
+      redirect_to ucs_path, notice: 'UCs imported successfully.'
+    elsif params[:file] && params[:villages]
+      Village.import(params[:file]) 
+      redirect_to ucs_path, notice: 'Villages imported successfully.'
+    else
+       redirect_to ucs_path, alert: 'You did not select file or some error occured.'
+    end
   end
   private
     # Use callbacks to share common setup or constraints between actions.

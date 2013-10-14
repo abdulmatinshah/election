@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Election</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -8,10 +10,14 @@
 </head>
 <body>
 <%= render 'layouts/nav' %>
-<div class="container">
-      <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-  <div class="col col-sm-4">
+    <br>
+    <%  if current_user && current_user.admin? %>
+    <%= form_tag import_ucs_path, multipart: true do %>
+      <%= file_field_tag :file, label: 'Attach' %>
+        <%= submit_tag 'Import villages', name: 'villages', class: 'btn btn-xs btn-success' %>
+        <%= submit_tag 'Import Union Councils', name: 'ucs', class: 'btn btn-xs btn-success' %>
+      <% end %>
+    <% end %>
     
     <% unless @ucs.blank? %>
       <h3>UC Navigation</h3>
@@ -23,8 +29,8 @@
 
   <div class="col col-sm-8">
     <%= yield %>
+   
   </div> <!-- end col-sm-8 -->
 </div> <!-- end container -->
-
 </body>
 </html>
