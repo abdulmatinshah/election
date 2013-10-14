@@ -1,35 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <h2>
-  <strong>Union Council:</strong>
-  <%= @uc.name %>
+  <strong>Polling Stations of Union Council</strong> <%= @uc.name %>
 </h2>
 <div>
-<p>List of polling statiions</p>
+
  <ol>
   <% @uc.stations.each do |stn| %>
-   
       <li><%= stn.name %></li>
-      <table>
-        <thead>
-          <th>Candiate's Name</th>
-        </thead>
-        <tbody>
-          <tr>
-          <% stn.uc.candidates.each do |cand| %>
-          
-            <td>
-              <%= cand.name %>
-            </td>
-          
-        
-        <% end %>
-      </tr>
-        </tbody>
-      </table>
-      
-    
-  <% end %></ol>
+  <% end %>
+</ol>
 </div>
 <%= link_to 'Edit', edit_uc_path(@uc) %> |
 <%= link_to 'Back', ucs_path %>
