@@ -9,7 +9,9 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require twitter/bootstrap
- *= require_self
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require dataTables/src/demo_table_jui
  *= require_tree .
  */
 /*import font */
@@ -18,7 +20,7 @@
 /*$font-family-base: 'Kite One';
 @import url(href='http://fonts.googleapis.com/css?family=Kite+One');*/
 
-$link-color: red;
+$link-color: green;
 $link-color-hover: darken($link-color, 14%);
 $btn-default-bg: yellow;
 @import "twitter/bootstrap";

@@ -10,27 +10,17 @@
 </head>
 <body>
 <%= render 'layouts/nav' %>
-    <br>
-    <%  if current_user && current_user.admin? %>
-    <%= form_tag import_ucs_path, multipart: true do %>
-      <%= file_field_tag :file %>
-        <%= submit_tag 'Import villages', name: 'villages', class: 'btn btn-xs btn-success' %>
-        <%= submit_tag 'Import Union Councils', name: 'ucs', class: 'btn btn-xs btn-success' %>
-      <% end %>
-    <% end %>
-    
-    <% unless @ucs.blank? %>
-      <h3>UC Navigation</h3>
-      <ul>
-       <%= render @ucs %>
-      </ul> 
-    <% end %>
-  </div>
-
-  <div class="col col-sm-8">
+<div class="container">
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: name.to_s=='notice' ? "alert alert-success" : "alert alert-danger" %> 
+  <% end %>
+  
     <%= yield %>
-   
-  </div> <!-- end col-sm-8 -->
+ 
+<div class="row">
+  <%= render 'layouts/footer' %>
+</div>
 </div> <!-- end container -->
+
 </body>
 </html>

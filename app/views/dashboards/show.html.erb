@@ -1,11 +1,35 @@
-<h1>Dashboard Area</h1>
-<h2>Welcome <%= current_user.username %></h2>
-
 <div class="row">
-  <div class="col col-sm-4">
-    <%= link_to 'Union councils', ucs_path %>
-  </div>
-  <div class="col col-sm-8">
-    8
-  </div>
+<div class="text-center">
+
+<h2> <span class="glyphicon glyphicon-tower"></span> Dashboard Area</h2>
+<h3>Welcome <%= current_user.username %></h3>
 </div>
+  <div class="col col-sm-4">
+  
+    <div class="well">
+      <h3> <span class="glyphicon glyphicon-th-large"></span> Users</h3>
+      <%= render @users %>
+    </div>
+  
+      
+  </div>
+    <div class="col col-sm-8">
+      
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title"> <span class="glyphicon glyphicon-plus-sign"></span> villages | UCs | Polling Stations |  Users </h3>
+          </div>
+          <div class="panel-body">
+             <%  if current_user && current_user.admin? %>
+              <%= form_tag import_ucs_path, multipart: true do %>
+                <%= file_field_tag :file %>
+                  <%= submit_tag 'Import villages', name: 'villages', class: 'btn btn-xs btn-success' %>
+                  <%= submit_tag 'Import Union Councils', name: 'ucs', class: 'btn btn-xs btn-success' %>
+                <% end %>
+            <% end %> <!-- panel-body -->
+          </div><!--   panel-heading-->
+        </div> <!-- panel panel-primary -->
+   
+
+    </div> <!-- end col-sm-8 -->
+  </div> <!-- end of row -->

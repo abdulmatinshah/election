@@ -1,15 +1,19 @@
 <h1><span class="glyphicon glyphicon-align-left"></span> Listing UCs</h1>
-<%= link_to 'CSV', ucs_path(format: 'csv') %>
+<p class="text-info">download file<span class="glyphicon glyphicon-import"></span>: <%= link_to 'CSV', ucs_path(format: 'csv') %></p>
 
-  <table class="table table-stripped">
+  <table id="ucs" class="display table table-striped table-hover">
   <thead>
     <tr>
       <th>Name</th>
       <th>Villages</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Polling stations</th>
+      <th>Results</th>
+      <% if current_user %>
+        <th>Edit</th>
+       <% end %>
+      <%  if current_user && current_user.admin? %>
+        <th>Destroy</th>
+      <% end %>
     </tr>
   </thead>
 
@@ -20,15 +24,13 @@
         <td><%= link_to 'Villages', uc_villages_path(uc) %></td>
         <td><%= link_to 'Polling Stations', uc %></td>
         <td><%= link_to 'Results', results_uc_path(uc) %></td>
+          <% if current_user %>
+            <td><%= link_to 'Edit', updates_uc_path(uc) %></td>
+          <% end %>
         <%  if current_user && current_user.admin? %>
-          <td><%= link_to 'Edit', updates_uc_path(uc) %></td>
           <td><%= link_to 'Destroy', uc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-<%= link_to 'New Uc', new_uc_path, class: 'btn btn-default' %>
-
