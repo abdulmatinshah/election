@@ -22,8 +22,8 @@
         <td><%= link_to 'Results', results_uc_path(uc) %></td>
         <%  if current_user && current_user.admin? %>
           <td><%= link_to 'Edit', updates_uc_path(uc) %></td>
+          <td><%= link_to 'Destroy', uc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-        <td><%= link_to 'Destroy', uc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
