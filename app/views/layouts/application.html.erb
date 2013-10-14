@@ -13,7 +13,7 @@
     <br>
     <%  if current_user && current_user.admin? %>
     <%= form_tag import_ucs_path, multipart: true do %>
-      <%= file_field_tag :file, label: 'Attach' %>
+      <%= file_field_tag :file %>
         <%= submit_tag 'Import villages', name: 'villages', class: 'btn btn-xs btn-success' %>
         <%= submit_tag 'Import Union Councils', name: 'ucs', class: 'btn btn-xs btn-success' %>
       <% end %>

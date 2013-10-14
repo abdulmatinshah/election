@@ -1,6 +1,7 @@
 
 class Uc < ActiveRecord::Base
   include Importer
+  
   has_many :candidates
   has_many :stations
   has_many :villages
