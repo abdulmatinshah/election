@@ -78,6 +78,9 @@ class UcsController < ApplicationController
     elsif params[:file] && params[:villages]
       Village.import(params[:file]) 
       redirect_to ucs_path, notice: 'Villages imported successfully.'
+    elsif params[:file] && params[:users]
+      User.import(params[:file]) 
+      redirect_to ucs_path, notice: 'Users imported successfully.'
     else
        redirect_to ucs_path, alert: 'You did not select file or some error occured.'
     end

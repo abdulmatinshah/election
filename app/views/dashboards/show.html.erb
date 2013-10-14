@@ -14,22 +14,50 @@
       
   </div>
     <div class="col col-sm-8">
+      <%  if current_user && current_user.admin? %>
       
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title"> <span class="glyphicon glyphicon-plus-sign"></span> villages | UCs | Polling Stations |  Users </h3>
+            <h3 class="panel-title"> <span class="glyphicon glyphicon-plus-sign"></span> Add Union Councils </h3>
           </div>
           <div class="panel-body">
-             <%  if current_user && current_user.admin? %>
+            
               <%= form_tag import_ucs_path, multipart: true do %>
                 <%= file_field_tag :file %>
-                  <%= submit_tag 'Import villages', name: 'villages', class: 'btn btn-xs btn-success' %>
-                  <%= submit_tag 'Import Union Councils', name: 'ucs', class: 'btn btn-xs btn-success' %>
-                <% end %>
+                  
+                  <%= submit_tag 'Import', name: 'ucs', class: 'btn btn-sm btn-success' %>
+               
+            <% end %> <!-- panel-body -->
+          </div><!--   panel-heading-->
+        </div> <!-- panel panel-primary -->
+         <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title"> <span class="glyphicon glyphicon-plus-sign"></span> Add Villages </h3>
+          </div>
+          <div class="panel-body">
+            
+              <%= form_tag import_ucs_path, multipart: true do %>
+                <%= file_field_tag :file %>
+                  <%= submit_tag 'Import', name: 'villages', class: 'btn btn-sm btn-success' %>
+               
+            <% end %> <!-- panel-body -->
+          </div><!--   panel-heading-->
+        </div> <!-- panel panel-primary -->
+
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title"> <span class="glyphicon glyphicon-plus-sign"></span> Add Users </h3>
+          </div>
+          <div class="panel-body">
+            
+              <%= form_tag import_ucs_path, multipart: true do %>
+                <%= file_field_tag :file %>
+                  <%= submit_tag 'Import', name: 'users', class: 'btn btn-sm btn-success' %>
+               
             <% end %> <!-- panel-body -->
           </div><!--   panel-heading-->
         </div> <!-- panel panel-primary -->
    
-
+      <% end %>
     </div> <!-- end col-sm-8 -->
   </div> <!-- end of row -->

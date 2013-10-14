@@ -14,10 +14,11 @@
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name.to_s=='notice' ? "alert alert-success" : "alert alert-danger" %> 
   <% end %>
-  
+
     <%= yield %>
  
-
+<nav class=" text-muted navbar navbar-default navbar-fixed-bottom" role="navigation">
+  <h5 class="text-center navbar-text"> District Govt. Narowal &copy; 2013 <span> All rights reserved</span></h5>
 </div> <!-- end container -->
 
 </body>
