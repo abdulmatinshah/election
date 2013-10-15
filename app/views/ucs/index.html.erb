@@ -24,7 +24,7 @@
   <tbody>
     <% @ucs.each do |uc| %>
       <tr>
-        <td><%= uc.name %></td>
+        <td><%= uc.name %> <span class="badge">(No.<%= uc.id %>)</span></td>
         <td><%= link_to 'Villages', uc_villages_path(uc) %></td>
         <td><%= link_to 'Polling Stations', uc %></td>
         <td><%= link_to 'Results', results_uc_path(uc) %></td>

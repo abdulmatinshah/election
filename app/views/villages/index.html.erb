@@ -1,5 +1,5 @@
 <h2><span class="glyphicon glyphicon-th-list"></span> <%= @uc.name %> (UC No. <%= @uc.id %>)</h2>
-<p>Download list of villages: <span class="glyphicon glyicon-import"></span> 
+<p>Download list of villages: <span class="glyphicon glyphicon-import"></span> 
   <%= link_to 'CSV', uc_villages_path(@uc.id, format: 'csv')  %> |
   <%= link_to 'Excel', uc_villages_path(@uc.id, format: 'xls')  %>
 </p>
