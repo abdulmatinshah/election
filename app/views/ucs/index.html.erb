@@ -1,5 +1,9 @@
 <h1><span class="glyphicon glyphicon-align-left"></span> Listing UCs</h1>
-<p class="text-info">download file<span class="glyphicon glyphicon-import"></span>: <%= link_to 'CSV', ucs_path(format: 'csv') %></p>
+<p>
+  Download list of UCs: <span class="glyphicon glyphicon-import"></span>: 
+  <%= link_to 'CSV', ucs_path(format: 'csv') %> |
+  <%= link_to 'Excel', ucs_path(format: 'xls') %>
+</p>
 
   <table id="ucs" class="display table table-striped table-hover">
   <thead>
