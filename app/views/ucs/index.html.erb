@@ -11,8 +11,8 @@
       <th>Name</th>
       <th>Villages</th>
       <th>Polling stations</th>
-      <th>Results</th>
       <% if current_user %>
+      <th>Results</th>
         <th>Edit</th>
        <% end %>
       <%  if current_user && current_user.admin? %>
@@ -24,11 +24,11 @@
   <tbody>
     <% @ucs.each do |uc| %>
       <tr>
-        <td><%= uc.name %> <span class="badge">(No.<%= uc.id %>)</span></td>
+        <td><%= uc.name %> <span class="badge">No.<%= uc.id %></span></td>
         <td><%= link_to 'Villages', uc_villages_path(uc) %></td>
         <td><%= link_to 'Polling Stations', uc %></td>
-        <td><%= link_to 'Results', results_uc_path(uc) %></td>
           <% if current_user %>
+        <td><%= link_to 'Results', results_uc_path(uc) %></td>
             <td><%= link_to 'Edit', updates_uc_path(uc) %></td>
           <% end %>
         <%  if current_user && current_user.admin? %>

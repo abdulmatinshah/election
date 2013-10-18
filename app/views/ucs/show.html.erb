@@ -2,12 +2,16 @@
   <strong>Polling Stations of Union Council</strong> <%= @uc.name %>
 </h2>
 <div>
-
- <ol>
+<%  if @uc.stations.any? %>
+<ol>
   <% @uc.stations.each do |stn| %>
       <li><%= stn.name %></li>
   <% end %>
 </ol>
 </div>
+<% else %>
+<%= content_tag :div, content_tag(:h5, "List of Polling stations of UC #{@uc.name} is not yet available. It  shall be updated before elections."), class: 'well' %>
+<% end %>
+ 
 <%= link_to 'Edit', edit_uc_path(@uc) %> |
 <%= link_to 'Back', ucs_path %>
