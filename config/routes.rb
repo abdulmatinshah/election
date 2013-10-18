@@ -1,5 +1,6 @@
 Election::Application.routes.draw do
   
+  get "stations/index"
   devise_for :users
   resources :ucs do
     member do
@@ -9,7 +10,13 @@ Election::Application.routes.draw do
     collection do
       post 'import'
     end
-   resources :villages, only: [:index, :new, :create, :edit] 
+   resources :villages, only: [:index] 
+   resources :stations, only: [:index, :update] do
+    member do
+      get 'updates'
+      get 'result'
+    end
+   end
    end
   
   resource :dashboard, only: [:show]

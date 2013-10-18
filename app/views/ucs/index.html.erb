@@ -26,7 +26,7 @@
       <tr>
         <td><%= uc.name %> <span class="badge">No.<%= uc.id %></span></td>
         <td><%= link_to 'Villages', uc_villages_path(uc) %></td>
-        <td><%= link_to 'Polling Stations', uc %></td>
+        <td><%= link_to 'Polling Stations', uc_stations_path(uc) %></td>
           <% if current_user %>
         <td><%= link_to 'Results', results_uc_path(uc) %></td>
             <td><%= link_to 'Edit', updates_uc_path(uc) %></td>

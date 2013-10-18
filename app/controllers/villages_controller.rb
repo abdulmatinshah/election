@@ -7,4 +7,5 @@ class VillagesController < ApplicationController
       format.xls { send_data @uc.villages.to_csv(col_sep: '\t') }
     end
   end
+  
 end
