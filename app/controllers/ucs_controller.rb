@@ -1,4 +1,5 @@
 class UcsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show, :results]
   before_action :set_uc, only: [:show, :edit, :update, :destroy, :results, :updates]
 
   # GET /ucs
@@ -71,7 +72,6 @@ class UcsController < ApplicationController
   def updates
   end
   def import
-
     if params[:file] && params[:ucs] 
       Uc.import(params[:file]) 
       redirect_to ucs_path, notice: 'UCs imported successfully.'
@@ -85,6 +85,8 @@ class UcsController < ApplicationController
        redirect_to ucs_path, alert: 'You did not select file or some error occured.'
     end
   end
+
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_uc

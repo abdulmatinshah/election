@@ -1,12 +1,12 @@
-<h1>Update edit form</h1>
+<h1>Update results</h1>
 <h2><%= "UC: #{@uc.name}" %></h2>
 <%= form_for @uc do |f| %>
 <% @uc.stations.each do |stn| %>
-<h3><%= stn.name %></h3>
+<p><%= "#{stn.id}. #{stn.name}" %></p>
 <% @uc.candidates.each do |candidate| %>
    <%= f.fields_for :candidates, candidate do |cand| %>
     <fieldset>
-    <%= cand.label :name, cand.object.name %>
+    <%= cand.label :name, cand.object.name %> <%= cand.object.position.name %>
       <%= cand.fields_for :votes, stn.votes.find_or_initialize_by(candidate: candidate) do |v| %>
         <%= v.text_field :voters %>
         <%= v.hidden_field :station_id, value: stn.id %>
@@ -15,5 +15,5 @@
    <% end %> <!-- end cand -->
   <% end %> <!-- end candidate -->
   <% end %> <!-- end stn -->
-   <%= f.submit %>
+   <%= f.submit class: 'btn btn-default' %>
 <% end %> <!-- form_for @uc -->
