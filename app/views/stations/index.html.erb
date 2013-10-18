@@ -1,0 +1,7 @@
+<h1><span class="glyphicon glyphicon-th-list"></span> List of Polling Stations</h1>
+<h3> <%= @uc.name %> (UC No. <%= @uc.id %>)</h3>
+<p>Download list of Polling station: <span class="glyphicon glyphicon-import"></span> 
+  <%= link_to 'CSV', uc_villages_path(@uc.id, format: 'csv')  %> |
+  <%= link_to 'Excel', uc_villages_path(@uc.id, format: 'xls')  %>
+</p>
+<ol><%= render @uc.stations %></ol>

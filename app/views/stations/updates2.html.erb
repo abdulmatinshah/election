@@ -1,0 +1,32 @@
+<h1>Update votings</h1>
+<h2><%= "Polling station: #{@station.name}" %></h2>
+<%= form_for @station do |f| %>
+  
+
+
+
+
+  <%= f.submit class: 'btn btn-default' %>
+<% end %> <!-- form_for @station -->
+
+
+
+<hr>
+<h2><%= "UC: #{@uc.name}" %></h2>
+<%= form_for @uc do |f| %>
+<% @uc.stations.each do |stn| %>
+<p><%= "#{stn.id}. #{stn.name}" %></p>
+<% @uc.candidates.each do |candidate| %>
+   <%= f.fields_for :candidates, candidate do |cand| %>
+    <fieldset>
+    <%= cand.label :name, cand.object.name %> <%= cand.object.position.name %>
+      <%= cand.fields_for :votes, stn.votes.find_or_initialize_by(candidate: candidate) do |v| %>
+        <%= v.text_field :voters %>
+        <%= v.hidden_field :station_id, value: stn.id %>
+      <% end %> <!-- end v -->
+      </fieldset>
+   <% end %> <!-- end cand -->
+  <% end %> <!-- end candidate -->
+  <% end %> <!-- end stn -->
+   <%= f.submit class: 'btn btn-default' %>
+<% end %> <!-- form_for @uc -->

@@ -1,0 +1,16 @@
+<h1>Update votings</h1>
+<h2><%= "Polling station: #{@station.name}" %></h2>
+<%= form_for [@uc, @station] do |f| %>
+  <% @station.candidates.each do |candidate| %>
+   
+    <fieldset>
+      <%= candidate.name %>
+      <%= f.fields_for :votes, @station.votes.find_or_initialize_by(candidate: candidate) do |v| %>
+           <%= v.text_field :voters %>
+      <% end %>
+      </fieldset>
+   <% end %> <!-- end cand -->
+
+  <%= f.submit class: 'btn btn-default' %>
+<% end %> <!-- form_for @station -->
+<%= link_to 'Cancel', uc_stations_path(@uc) %>
