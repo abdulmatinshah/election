@@ -1,4 +1,3 @@
-
 class Uc < ActiveRecord::Base
   include Importer
   
@@ -9,7 +8,7 @@ class Uc < ActiveRecord::Base
   accepts_nested_attributes_for :candidates
 
 
-  # def self.to_csv(options={})
+#def self.to_csv(options={})
   #   CSV.generate(options) do |csv|
   #     csv << column_names
   #     all.each do |uc|

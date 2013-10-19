@@ -1,24 +1,25 @@
 Election::Application.routes.draw do
   
-  get "stations/index"
   devise_for :users
   resources :ucs do
     member do
-     get 'results'
+     # get 'results'
      get 'updates'
     end
     collection do
       post 'import'
     end
-   resources :villages, only: [:index] 
-   resources :stations, only: [:index, :update] do
-    member do
-      get 'updates'
-      get 'result'
+    resources :villages, only: [:index] 
+    
+    resources :stations, only: [:index, :update] do
+      member do
+        get 'updates'
+        get 'result'
+      end
     end
-   end
-   end
   
+    resources :results, only: :index
+  end
   resource :dashboard, only: [:show]
   get 'import_villages', to: "villages#import"
   get 'dashboard', to: 'dashboards#show', as: :dash
