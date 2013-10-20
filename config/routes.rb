@@ -17,6 +17,7 @@ Election::Application.routes.draw do
         get 'result'
       end
     end
+    
   
     resources :results, only: :index
   end

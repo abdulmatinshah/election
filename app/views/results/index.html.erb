@@ -1,9 +1,9 @@
 <h1><span class="glyphicon glyphicon-bullhorn"></span> Results of UC <%= @uc.name %></h1>
-<% @grouped_candidates.each do |key, value| %>
-<h2><%= key.name %></h2>
+<% @grouped_candidates.each do |position, candidates| %>
+<h2><%= position.id %>. <%= position.name %></h2>
 <div class="well">
 <ol>
-<% value.sort_by { |v| - v.total_votes }.each do |candidate| %>
+<% candidates.sort_by { |v| - v.total_votes }.each do |candidate| %>
  
    <li>
       <strong><%= candidate.name %></strong> secured: <strong><%= pluralize(candidate.total_votes, 'vote') %></strong>

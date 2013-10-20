@@ -1,5 +1,106 @@
 <h1>Update votings</h1>
 <h2><%= "Polling station: #{@station.name}" %></h2>
+<%= form_for [@uc, @station] do |f| %>
+  <% @station.uc.candidates.each do |candidate| %>
+   
+    <fieldset>
+      <%= candidate.name %>
+      <%= f.fields_for :votes, @station.votes.find_or_initialize_by(candidate: candidate) do |v| %>
+           <%= v.text_field :voters %>
+           <%= v.hidden_field :candidate_id, value: candidate.id %>
+      <% end %>
+      </fieldset>
+   <% end %> <!-- end candidate -->
+
+  <%= f.submit class: 'btn btn-default' %>
+<% end %> <!-- form_for @station -->
+<%= link_to 'Cancel', uc_stations_path(@uc) %>
+
+<!-- working from candidateside -->
+
+<%= form_for [@uc, @station] do |f| %>
+
+<% @grouped_candidates.each do |position,candidates| %>
+<h3><%= position.id %>. <%= position.name %></h3>
+  <% candidates.each do |candidate| %>
+  <fieldset>
+      <%= candidate.name %>
+      <%= f.fields_for :votes, @station.votes.find_or_initialize_by(candidate: candidate) do |v| %>
+           <%= v.text_field :voters %>
+           <%= v.hidden_field :candidate_id, value: candidate.id %>
+      <% end %>
+      </fieldset>
+  <% end %> <!-- v -->
+<% end %> <!-- grouped candidates -->
+<%= f.submit class: 'btn btn-default' %>
+<% end %> <!-- end of form -->
+<%= link_to 'Cancel', uc_stations_path(@uc) %>
+
+
+
+<!-- end working for candidate side -->
+
+
+
+<%= form_for [@uc, @station] do |f| %>
+
+<% @grouped_candidates.each do |position,values| %>
+<h3><%= position.name %></h3>
+  <% values.each do |candidate| %>
+  <fieldset>
+      <%= candidate.name %>
+      <%= f.fields_for :votes, candidate.votes.find_or_initialize_by(station: @station) do |v| %>
+           <%= v.text_field :voters %>
+      <% end %>
+      </fieldset>
+  <% end %> <!-- v -->
+<% end %> <!-- grouped candidates -->
+<%= f.submit class: 'btn btn-default' %>
+<% end %> <!-- end of form -->
+
+<h1>Update votings</h1>
+<h2><%= "Polling station: #{@station.name}" %></h2>
+
+<%= form_for [@uc, @station] do |f| %>
+
+<% @grouped_candidates.each do |position,values| %>
+<h3><%= position.name %></h3>
+  <% values.each do |candidate| %>
+  <fieldset>
+      <%= candidate.name %>
+      <%= f.fields_for :votes, candidate.votes.find_or_initialize_by(station: @station) do |v| %>
+           <%= v.text_field :voters %>
+      <% end %>
+      </fieldset>
+  <% end %> <!-- v -->
+<% end %> <!-- grouped candidates -->
+<%= f.submit class: 'btn btn-default' %>
+<% end %> <!-- end of form -->
+
+
+
+<%= debug(@station.candidates) %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1>Update votings</h1>
+<h2><%= "Polling station: #{@station.name}" %></h2>
 <%= form_for @station do |f| %>
   
 

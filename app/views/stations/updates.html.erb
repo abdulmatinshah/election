@@ -1,16 +1,29 @@
-<h1>Update votings8</h1>
-<h2><%= "Polling station: #{@station.name}" %></h2>
+<h1>Update votings</h1>
 <%= form_for [@uc, @station] do |f| %>
-  <% @station.candidates.each do |candidate| %>
-   
-    <fieldset>
-      <%= candidate.name %>
-      <%= f.fields_for :votes, @station.votes.find_or_initialize_by(candidate: candidate) do |v| %>
+<% @grouped_candidates.each do |position,candidates| %>
+<h3><%= position.id %>. <%= position.name %></h3>
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+    <th>Candidate</th>
+    <th>Votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% candidates.each do |candidate| %>
+    <tr>
+      <td><%= candidate.name %></td>
+      <td><%= f.fields_for :votes, @station.votes.find_or_initialize_by(candidate: candidate) do |v| %>
            <%= v.text_field :voters %>
-      <% end %>
-      </fieldset>
-   <% end %> <!-- end cand -->
-
-  <%= f.submit class: 'btn btn-default' %>
-<% end %> <!-- form_for @station -->
+           <%= v.hidden_field :candidate_id, value: candidate.id %>
+     <% end %> <!-- v --></td>
+    </tr>
+     <% end %> <!-- end candisate -->
+  </tbody>
+</table>
+ 
+<% end %> <!-- grouped candidates -->
+<%= f.submit class: 'btn btn-default' %>
+<% end %> <!-- end of form -->
 <%= link_to 'Cancel', uc_stations_path(@uc) %>
+

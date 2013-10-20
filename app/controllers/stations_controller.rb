@@ -30,11 +30,12 @@ class StationsController < ApplicationController
   def set_station
     @uc = Uc.find_by_id params[:uc_id]
     @station = @uc.stations.find_by_id(params[:id])
+    @grouped_candidates = @uc.candidates.group_by(&:position)
   end
   def station_params
     params.require(:station).permit(:name, 
             :votes_attributes => [:id, :voters, :candidate_id ]
           )
   end
-
+   
 end
