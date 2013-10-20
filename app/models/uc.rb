@@ -7,6 +7,9 @@ class Uc < ActiveRecord::Base
   
   accepts_nested_attributes_for :candidates
 
+  scope :teh, -> (i) { where(tehsil_id: i) }
+  scope :rural, -> { where(type_id: 1)}
+  scope :urban, -> { where(type_id: 2)}
 
 #def self.to_csv(options={})
   #   CSV.generate(options) do |csv|
