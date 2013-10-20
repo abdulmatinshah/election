@@ -1,5 +1,7 @@
 class Uc < ActiveRecord::Base
   include Importer
+  belongs_to :tehsil
+  belongs_to :type
   
   has_many :candidates
   has_many :stations
