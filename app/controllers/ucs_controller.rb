@@ -5,7 +5,14 @@ class UcsController < ApplicationController
   # GET /ucs
   # GET /ucs.json
   def index
-    @ucs = Uc.all
+    @teh_id = params[:teh].to_i
+    @damo_id = params[:damo].to_i
+    
+    ucs = @teh_id == 0 ? Uc.all : Uc.teh(@teh_id)
+
+    @ucs = @damo_id == 0 ? ucs : ucs.damo(@damo_id)
+    # @ucs = ucs.damo(@damo_id) if @damo_id != 0
+
     respond_to do |format|
       format.html
       format.csv { send_data @ucs.to_csv}
