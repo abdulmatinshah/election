@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <% candidates.each do |candidate| %>
+    <% candidates.sort_by {|c| c.name }.each do |candidate| %>
     <tr>
       <td><%= candidate.name %></td>
       <td><%= f.fields_for :votes, @station.votes.find_or_initialize_by(candidate: candidate) do |v| %>
