@@ -1,4 +1,4 @@
-<h1>Update votings</h1>
+<h1><span class="glyphicon glyphicon-list"></span> Update votes of UC <%= @uc.name %></h1>
 <%= form_for [@uc, @station] do |f| %>
 <% @grouped_candidates.each do |position,candidates| %>
 <h3><%= position.id %>. <%= position.name %></h3>
@@ -14,7 +14,7 @@
     <tr>
       <td><%= candidate.name %></td>
       <td><%= f.fields_for :votes, @station.votes.find_or_initialize_by(candidate: candidate) do |v| %>
-           <%= v.text_field :voters %>
+          <%= v.number_field :voters %>
            <%= v.hidden_field :candidate_id, value: candidate.id %>
      <% end %> <!-- v --></td>
     </tr>

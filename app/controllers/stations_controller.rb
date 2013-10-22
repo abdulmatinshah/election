@@ -1,4 +1,6 @@
 class StationsController < ApplicationController
+  before_action :authenticate_user!, only: [:update, :updates]
+
   before_action :set_station, only: [:index, :update, :updates, :result]
   before_action :station_params, only: :update
   def index
@@ -21,9 +23,6 @@ class StationsController < ApplicationController
     end
   end
   def updates
-  end
-
-  def result
   end
 
   private
