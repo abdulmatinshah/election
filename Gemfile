@@ -52,7 +52,7 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 gem 'devise'
 gem 'roo'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
-
+gem "paperclip-dropbox", ">= 1"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

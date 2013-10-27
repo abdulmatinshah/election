@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131020122042) do
+ActiveRecord::Schema.define(version: 20131027104406) do
 
   create_table "candidates", force: true do |t|
     t.string   "name"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20131020122042) do
 
   add_index "candidates", ["position_id"], name: "index_candidates_on_position_id"
   add_index "candidates", ["uc_id"], name: "index_candidates_on_uc_id"
+
+  create_table "downloads", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "path_file_name"
+    t.string   "path_content_type"
+    t.integer  "path_file_size"
+    t.datetime "path_updated_at"
+  end
 
   create_table "positions", force: true do |t|
     t.string   "name"

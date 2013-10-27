@@ -1,5 +1,7 @@
 Election::Application.routes.draw do
   
+  resources :downloads, only: [:index, :edit, :create, :update, :destroy]
+
   devise_for :users
   resources :ucs do
     member do

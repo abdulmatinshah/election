@@ -1,0 +1,22 @@
+<h2>Download Section</h2>
+<div class="well">
+  <p>Please right click a download link and select 'Save Link as' option to download pdf version of the required document.</p>
+</div>
+<ol>
+<% @downloads.each do |download| %>
+  <li>
+    <strong><%= download.title %></strong> <%= link_to 'Download', download.path.url %>
+    <% if current_user && current_user.admin? %>
+      <%= link_to 'Edit', edit_download_path(download) %> | 
+      <%= link_to 'Destroy', download, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </li>
+<% end %>
+</ol>
+    
+<% if current_user && current_user.admin? %>
+  <div class="well">
+    <%= render 'form' %>
+  </div>
+<% end %>
+

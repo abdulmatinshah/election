@@ -1,6 +1,9 @@
  <div class="row">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <h3><%= link_to "Local Govt. Elections 2013", root_path, class: "navbar-text navbar brand" %></h3>
+      <ul class="nav nav-pills">
+        <li> <%= link_to 'Home', root_path %></li>
+        <li class="<%= "active" if params[:controller] == "downloads" %>"> <%= link_to 'Download Section', downloads_path %> </li>
       <p class="navbar-text pull-right">
         <% if user_signed_in? %>
           <%= link_to 'Dashbaord', dashboard_path %> |
@@ -10,6 +13,7 @@
           <%= link_to 'Sign in', new_user_session_path %> 
         <% end %>
       </p>
+    </ul>
     </nav>
  </div>
  
