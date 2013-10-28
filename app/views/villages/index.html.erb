@@ -3,4 +3,7 @@
   <%= link_to 'CSV', uc_villages_path(@uc.id, format: 'csv')  %> |
   <%= link_to 'Excel', uc_villages_path(@uc.id, format: 'xls')  %>
 </p>
+
 <ol><%= render @uc.villages %></ol>
+
+<h5>Total Population <%= @uc.villages.sum(:population) %></h5>

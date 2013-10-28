@@ -5,7 +5,7 @@
 <ol>
 <% @downloads.each do |download| %>
   <li>
-    <strong><%= download.title %></strong> <%= link_to 'Download', download.path.url %>
+    <strong><%= download.title %></strong> <%= link_to 'Download', download.path.url(download: true) %>
     <% if current_user && current_user.admin? %>
       <%= link_to 'Edit', edit_download_path(download) %> | 
       <%= link_to 'Destroy', download, method: :delete, data: { confirm: 'Are you sure?' } %>
