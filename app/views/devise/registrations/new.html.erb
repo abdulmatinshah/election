@@ -1,3 +1,7 @@
+<% unless current_user && current_user.admin? %>
+<div class="well">You are not authorized to enter in this prohibited area. You credintials have been record. If you attempted 2nd time, you case shall be sent to police for registration of criminal case.
+</div>
+<% else %>
 <h2>Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -19,3 +23,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+<% end %>
