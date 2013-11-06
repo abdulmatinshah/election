@@ -15,6 +15,7 @@ module Importer
 
     def import(file)
     spreadsheet = open_sheet(file)
+    
     header = spreadsheet.row(1)
     
     (2..spreadsheet.last_row).each do |i|

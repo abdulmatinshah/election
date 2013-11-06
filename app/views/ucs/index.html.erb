@@ -30,7 +30,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Villages</th>
+      <th>Areas</th>
       <th>Polling stations</th>
       <% if current_user %>
       <th>Results</th>
@@ -45,8 +45,8 @@
   <tbody>
     <% @ucs.each do |uc| %>
       <tr>
-        <td><%= uc.name %> <span class="badge">No.<%= uc.id %></span></td>
-        <td><%= link_to 'Villages', uc_villages_path(uc) %></td>
+        <td><%= uc.name %></td>
+        <td><%= link_to uc.type_id==1 ? "Villages" : "Areas", uc_villages_path(uc) %></td>
         <td><%= link_to 'Polling Stations', uc_stations_path(uc) %></td>
           <% if current_user %>
         <td><%= link_to 'Results',  uc_results_path(uc) %></td>
